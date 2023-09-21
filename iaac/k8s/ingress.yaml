@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-com-fe-gcom-operacional
+  namespace: gcom
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: apolo.gcom-rent.cl
+      http:
+        paths:
+          - backend:
+              service:
+                name: com-fe-gcom-operacional-svc
+                port:
+                  number: 4010
+            path: /
+            pathType: ImplementationSpecific
